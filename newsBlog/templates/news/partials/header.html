@@ -1,5 +1,7 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
   <head>
     <meta charset="utf-8">
@@ -11,39 +13,36 @@
     <title>Stand Blog Posts</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="/static/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="/static/assets/css/templatemo-stand-blog.css">
-    <link rel="stylesheet" href="/static/assets/css/owl.css">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-stand-blog.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
   </head>
   <body>
     <!-- Header -->
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="/index/"><h2>Stand Blog<em>.</em></h2></a>
+          <a class="navbar-brand" href="{% url 'homepage' %}"><h2>Stand Blog<em>.</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="/index/">Home</a>
+                <a class="nav-link" href="{% url 'homepage' %}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/about/">About Us</a>
+                <a class="nav-link" href="{% url 'about' %}">About Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/blog/">Blog Entries</a>
+                <a class="nav-link" href="{% url 'blog' %}">Blog Entries</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/page/">Post Details</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/contact/">Contact Us</a>
+                <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
               </li>
             </ul>
           </div>
