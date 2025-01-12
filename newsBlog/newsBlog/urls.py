@@ -9,20 +9,17 @@ from django.conf.urls.static import static
 from news import views
 
 urlpatterns = [
-    path("", views.index_handler, name='homepage'),
+    path("", views.IndexView.as_view(), name='homepage'),
 
-    path("blog/", views.blog_handler, name='blog'),
-    path("blog/page/<number>/", views.blog_handler, name='blog_pager'),
+    path("blog/", views.BlogListView.as_view(), name='blog'),
+    path("category/<cat_slug>", views.CategoryListView.as_view(), name='category'),
 
-    path("category/<cat_slug>", views.blog_handler, name='category'),
-    path("category/<cat_slug>/page/<number>/", views.blog_handler, name='category_pager'),
+    path("post/<post_slug>", views.PageDetailView.as_view(), name='article'),
 
-    path("post/<post_slug>", views.page_handler, name='article'),
+    path("about/", views.AboutView.as_view(), name='about'),
+    path("contact/", views.ContactView.as_view(), name='contact'),
 
-    path("about/", views.about_handler, name='about'),
-    path("contact/", views.contact_handler, name='contact'),
-
-    path("robots.txt", views.robots_handler),
+    path("robots.txt", views.RobotsView.as_view()),
 
     path('summernote/', include('django_summernote.urls')),
 

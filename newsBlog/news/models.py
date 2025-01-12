@@ -60,6 +60,7 @@ class Comment(models.Model):
     comment = models.TextField()
     article = models.ForeignKey(Article, on_delete=CASCADE, related_name='comments')
     pub_date = models.DateTimeField(auto_now_add=True)
+    is_moderated = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
