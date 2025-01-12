@@ -9,12 +9,16 @@ from news.models import Author, Article, Category
 from django.utils.timezone import make_aware
 from concurrent.futures import ThreadPoolExecutor
 
-# get author from db that has id is 3 (Luda Barracuda)
-author = Author.objects.get(id=3)
-# articles = []
+AUTHOR = None
+
 
 
 def crawl_one(url):
+    global AUTHOR
+
+    if not AUTHOR:
+        AUTHOR = Author.objects.get(id=3)
+
     try:
 
         with HTMLSession() as session:
@@ -59,7 +63,7 @@ def crawl_one(url):
                 'short_description': short_description,
                 'main_image' : img_path,
                 'pub_date' : make_aware(pub_date),
-                'author': author
+                'author': AUTHOR
             }
 
             # article = Article(**article)
