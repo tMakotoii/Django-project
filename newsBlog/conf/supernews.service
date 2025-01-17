@@ -1,0 +1,17 @@
+[Unit]
+Description=Python News Website
+
+[Service]
+PIDFile=/run/blog/pid
+User=root
+Group=root
+WorkingDirectory=/root/Django-project/newsBlog
+ExecStart=/root/Django-project/venv/bin/gunicorn newsBlog.wsgi
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+Restart=always
+Nice=0
+
+[Install]
+WantedBy=multi-user.target
